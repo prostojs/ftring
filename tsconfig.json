@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "declaration": true,
+        "emitDeclarationOnly": true
+    },
+    "buildOptions": {
+    
+    },
+    "include": ["src"],
+    "exclude": ["src/*.spec.ts"]
+}
