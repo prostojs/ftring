@@ -31,7 +31,7 @@ const GLOBALS = {
     sessionStorage: null,
     console: null,
     performance: null,
-    fetch,
+    fetch: null,
     URL: null,
     URLSearchParams: null,
     XMLHttpRequest: null,
