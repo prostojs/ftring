@@ -76,7 +76,7 @@ export function ftring<R, CTX>(code: string): ((__ctx__: CTX) => R) {
     const fnCode = `with(__ctx__){\nreturn ${code}\n}`
     const fn = new Function('__ctx__', fnCode) as ((ctx?: Record<string, unknown>) => R)
     return ((ctx?: Record<string, unknown>) => {
-        const newCtx = Object.assign({}, GLOBALS, ctx)
+        const newCtx = Object.freeze(Object.assign({}, GLOBALS, ctx))
         return fn(newCtx)
     }) as ((__ctx__: CTX) => R)
 }

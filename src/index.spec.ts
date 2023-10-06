@@ -22,4 +22,25 @@ describe('FtringsPool', () => {
     })
 })
 
+describe('hacking ftring', () => {
+    it('mustn\'t allow mess up with ctx by deleting props', () => {
+        const fn = ftring(`(() => {
+            delete __ctx__.console;
+            __ctx__.setTimeout = '123'
+            if (console) {
+                console.log('hacked')
+            }
+            return __ctx__.setTimeout
+        })()`)
+        expect(fn({})).toBe(null)
+    })
+    it('mustn\'t allow mess up with __ctx__ var', () => {
+        const fn = ftring(`(() => {
+            const __ctx__ = {}
+            return setTimeout
+        })()`)
+        expect(fn({})).toBe(null)
+    })
+})
+
 
