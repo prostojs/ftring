@@ -1,4 +1,5 @@
 import { ftring, FtringsPool } from './index'
+
 describe('Ftring', () => {
     it('must generate fn', () => {
         const fn = ftring('1 + 1')
@@ -32,7 +33,7 @@ describe('hacking ftring', () => {
             }
             return __ctx__.setTimeout
         })()`)
-        expect(fn({})).toBe(null)
+        expect(() => fn({})).toThrow()
     })
     it('mustn\'t allow mess up with __ctx__ var', () => {
         const fn = ftring(`(() => {
@@ -42,5 +43,3 @@ describe('hacking ftring', () => {
         expect(fn({})).toBe(null)
     })
 })
-
-
